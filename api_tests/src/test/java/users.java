@@ -14,10 +14,6 @@ public class users {
 
     private static final String ENDPOINT = "/users";
 
-//    private final String TESTDATAFILEPATH = "v2/user/user.json";
-//    private JSONObject jsonData = null;
-//    private static final String ENDPOINT_CONTRACT = "user-schema.json";
-
     @Before
     public void setUp() throws IOException {
         Properties properties = new Properties();
