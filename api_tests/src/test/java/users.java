@@ -1,8 +1,12 @@
+import io.restassured.response.ValidatableResponse;
+import org.json.JSONObject;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.List;
 import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
@@ -13,10 +17,6 @@ public class users {
     String host = "";
 
     private static final String ENDPOINT = "/users";
-
-//    private final String TESTDATAFILEPATH = "v2/user/user.json";
-//    private JSONObject jsonData = null;
-//    private static final String ENDPOINT_CONTRACT = "user-schema.json";
 
     @Before
     public void setUp() throws IOException {
@@ -42,11 +42,22 @@ public class users {
 
     @Test
     public void getValidateEmail(){
-        given()
+
+       given()
                 .when()
                 .get(host + ENDPOINT)
                 .then()
                 .statusCode(200)
+                .body("email[0]",containsString("@"))
+                .body("email[1]",containsString("@"))
+                .body("email[2]",containsString("@"))
+                .body("email[3]",containsString("@"))
+                .body("email[4]",containsString("@"))
+                .body("email[5]",containsString("@"))
+                .body("email[6]",containsString("@"))
+                .body("email[7]",containsString("@"))
+                .body("email[8]",containsString("@"))
+                .body("email[9]",containsString("@"))
         ;
 
     }
@@ -58,6 +69,16 @@ public class users {
                 .get(host + ENDPOINT)
                 .then()
                 .statusCode(200)
+                .body("[0]['company]['catchPhrase']", hasSize(50))
+                .body("[1]['company]['catchPhrase']", hasSize(50))
+                .body("[2]['company]['catchPhrase']", hasSize(50))
+                .body("[3]['company]['catchPhrase']", hasSize(50))
+                .body("[4]['company]['catchPhrase']", hasSize(50))
+                .body("[5]['company]['catchPhrase']", hasSize(50))
+                .body("[6]['company]['catchPhrase']", hasSize(50))
+                .body("[7]['company]['catchPhrase']", hasSize(50))
+                .body("[8]['company]['catchPhrase']", hasSize(50))
+                .body("[9]['company]['catchPhrase']", hasSize(50))
         ;
 
     }
