@@ -1,4 +1,5 @@
 import io.restassured.response.ValidatableResponse;
+import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -24,6 +25,7 @@ public class posts {
 
     @Test
     public void postNew(){
+
         ValidatableResponse response = given()
                 .when()
                 .get(host + ENDPOINT)
@@ -31,6 +33,15 @@ public class posts {
                 .statusCode(200)
         ;
 
+        JSONObject body = new JSONObject(response.extract().body().asString());
+        String postId = body.getString("id");
+
+        given()
+                .when()
+                .post(host + ENDPOINT + "/" + postId)
+                .then()
+                .statusCode(200)
+        ;
 
     }
 }
