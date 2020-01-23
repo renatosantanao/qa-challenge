@@ -7,7 +7,7 @@ public class paginaSignIn {
     private WebDriver navegadorWeb;
 
     //construtor da pagina login para receber a instancia do Webdriver
-    public  paginaLogin(WebDriver navegadorWeb){
+    public  paginaSignIn(WebDriver navegadorWeb){
 
         //a instancia recebe o atribudo do navegador
         this.navegadorWeb = navegadorWeb;
