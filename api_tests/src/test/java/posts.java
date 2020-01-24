@@ -32,6 +32,7 @@ public class posts extends Utils {
                 .statusCode(200)
         ;
 
+        //extract body data
         JsonPath body = response.extract().jsonPath();
         postId = body.getString("[0]['userId']");
 
